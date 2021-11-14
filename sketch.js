@@ -25,6 +25,7 @@ function setup() {
   ship = createSprite(100,240,30,30);
   ship.addAnimation("ship_sailing",shipImg);
   ship.scale=0.5;
+  ship.setCollider("rectangle",0,0,300,300);
 
   //creating water ground
   water=createSprite(40,320,700,50);
@@ -72,7 +73,9 @@ function draw() {
       water.position.x = 400;
     }
     
-            
+    if(ship.position.x>750 || ship.position.x < 0){
+      ship.position.x = 100;
+    }        
     //Call user defined function
     spawnHelicopter();
     spawnBomb();
@@ -136,16 +139,5 @@ function reset(){
   restart.visible= false;
   helicopterG.destroyEach();
   bombG.destroyEach();
-  //ship.destroy();
   score= 0;
 }
-/*function shipF(){
-  //creating ship
-  fill("yellow");
-  textSize(15);
-  text("Press Space to Play",350,250 );
-
-  if(keyCode === 32){
-  
-}
-}*/
